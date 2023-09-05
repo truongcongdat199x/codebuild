@@ -4,6 +4,7 @@ version: 0.2
 env:
   parameter-store:
     SECRET_TOKEN: "NAMEE"
+    SECRET_TOKEN: "NOW"
 phases:
   pre_build:
     commands:
@@ -20,9 +21,9 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image...
-      - echo $NAMEE
+      - echo $NOW
       - echo $NAMEE > .env
-      - ls -lah
+      - cat .env
       # - docker build --platform linux/amd64 -t $REPOSITORY_URI:latest .
       - docker build -t $REPOSITORY_URI:latest .
       - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
