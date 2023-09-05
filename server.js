@@ -11,9 +11,11 @@ const HOST = '0.0.0.0';
 const app = express();
 app.get('/', (req, res) => {
   res.send(
-    `<body style='background-color:#283E5B'><h1 style='color: orange;text-align:center'>Hello AWS ${os.hostname()}</h1></body>`
+    `<body style='background-color:#283E5B'><h1 style='color: orange;text-align:center'>Hello ${process.env.NAMEE} ${os.hostname()}</h1></body>`
   );
 });
 
+const dotenv = require('dotenv');
+dotenv.config();
 app.listen(PORT, HOST);
 console.log(`Running on http://${HOST}:${PORT}`);
