@@ -41,7 +41,7 @@ phases:
 #   files: imagedefinitions.json
 
       - printf '[{"name":"container01","imageUri":"%s"}]'
-        $REPOSITORY_URI:$latest > imagedefinitions.json
+        $REPOSITORY_URI:latest > imagedefinitions.json
       - cat imagedefinitions.json
 artifacts:
   files: imagedefinitions.json
