@@ -1,5 +1,5 @@
 version: 0.2
-
+aws ssm get-parameter --with-decryption --name APP_ENV --region ap-northeast-1 | jq '.Parameter.Value'
 
 env:
   # shell: bash
@@ -28,7 +28,7 @@ phases:
       - echo Building the Docker image...
       - echo $VAR2 AND $VAR1
       # - echo $VAR3 > .env
-      - echo -e $(aws ssm get-parameter --with-decryption --name $APP_ENV --region $REGION | jq '.Parameter.Value') > .env
+      - aws ssm get-parameter --with-decryption --name $APP_ENV --region $REGION | jq -r '.Parameter.Value' > .env
       - cat .env
       - docker build -t $REPOSITORY_URI:latest .
       - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
