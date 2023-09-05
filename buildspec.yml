@@ -23,7 +23,7 @@ phases:
       - echo Build started on `date`
       - echo Building the Docker image...
       - echo $VAR2 AND $VAR1
-      - echo -e $VAR3 > .env
+      - echo $VAR3 > .env
       - cat .env
 #       # - docker build --platform linux/amd64 -t $REPOSITORY_URI:latest .
 #       - docker build -t $REPOSITORY_URI:latest .
