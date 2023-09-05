@@ -1,5 +1,4 @@
 version: 0.2
-aws ssm get-parameter --with-decryption --name APP_ENV --region ap-northeast-1 | jq '.Parameter.Value'
 
 env:
   # shell: bash
