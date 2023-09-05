@@ -2,6 +2,7 @@ version: 0.2
 
 
 env:
+  # shell: bash
   parameter-store:
     VAR1: "NAMEE"
     VAR2: "NOW"
@@ -27,7 +28,7 @@ phases:
       - echo Building the Docker image...
       - echo $VAR2 AND $VAR1
       # - echo $VAR3 > .env
-      - aws ssm get-parameter --with-decryption --name $APP_ENV --region $REGION | jq '.Parameter.Value' > .env
+      - echo -e $(aws ssm get-parameter --with-decryption --name $APP_ENV --region $REGION | jq '.Parameter.Value') > .env
       - cat .env
       - docker build -t $REPOSITORY_URI:latest .
       - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
